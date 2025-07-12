@@ -21,11 +21,14 @@ public class UserSkillMappingService {
 
     public Long addSkill(String skill,Long userId){
         skill = skill.trim().toUpperCase();
-        Long skillId = skillRepository.findBySkill(skill).getId();
-        if(skillId==null) {
+        SkillsModel skillsModel1 = skillRepository.findBySkill(skill);
+        Long skillId;
+        if(skillsModel1==null) {
             SkillsModel skillsModel = new SkillsModel();
             skillsModel.setSkill(skill);
             skillId = skillRepository.save(skillsModel).getId();
+        }else{
+            skillId = skillsModel1.getId();
         }
         try{
             UserSkillMappingModel userSkillMappingModel = new UserSkillMappingModel();
