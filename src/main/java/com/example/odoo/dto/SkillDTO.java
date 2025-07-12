@@ -6,4 +6,8 @@ import lombok.Data;
 public class SkillDTO {
     Long id;
     String skill;
+    public SkillDTO(Long id, String skill) {
+        this.id = id;
+        this.skill = skill;
+    }
 }

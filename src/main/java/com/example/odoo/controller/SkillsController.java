@@ -58,7 +58,7 @@ public class SkillsController {
         return new ResponseEntity<>(skills,HttpStatus.OK);
     }
 
-    @ValidateJwtToken
+//    @ValidateJwtToken
     @GetMapping("/search")
     public ResponseEntity<?> getAllUsersBySkill(@RequestParam("skill")String skill, HttpServletRequest httpServletRequest)
     {
