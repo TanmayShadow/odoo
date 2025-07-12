@@ -1,6 +1,7 @@
 package com.example.odoo.controller;
 
 import com.example.odoo.dto.SkillDTO;
+import com.example.odoo.model.UserSkillMappingModel;
 import com.example.odoo.service.UserSkillMappingService;
 import io.github.tanmayshadow.annotation.ValidateJwtToken;
 import io.github.tanmayshadow.util.JwtUtil;
@@ -54,5 +55,14 @@ public class SkillsController {
     {
         Long userId = Long.parseLong(jwtUtil.getClaim(httpServletRequest,"user")+"");
         List<SkillDTO> skills = userSkillMappingService.getAllUserSkills(userId);
+        return new ResponseEntity<>(skills,HttpStatus.OK);
+    }
+
+    @ValidateJwtToken
+    @GetMapping("/search")
+    public ResponseEntity<?> getAllUsersBySkill(@RequestParam("skill")String skill, HttpServletRequest httpServletRequest)
+    {
+        List<UserSkillMappingModel> skills = userSkillMappingService.getAllUsersBySkill(skill);
+        return new ResponseEntity<>(skills,HttpStatus.OK);
     }
 }
