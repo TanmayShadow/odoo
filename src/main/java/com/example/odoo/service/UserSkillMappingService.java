@@ -40,4 +40,8 @@ public class UserSkillMappingService {
     public List<SkillDTO> getAllUserSkills(Long userId) {
         return userSkillMappingRepository.findSkillsByUserid(userId);
     }
+
+    public List<UserSkillMappingModel> getAllUsersBySkill(String skill){
+        return userSkillMappingRepository.findBySkillName(skill);
+    }
 }

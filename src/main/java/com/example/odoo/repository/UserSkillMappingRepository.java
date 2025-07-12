@@ -14,4 +14,12 @@ public interface UserSkillMappingRepository extends JpaRepository<UserSkillMappi
             "on user_skill_mapping.skill_id = skill.id " +
             "where user_skill_mapping.user_id=?1;", nativeQuery = true)
     List<SkillDTO> findSkillsByUserid(Long userId);
+
+    @Query(value = "SELECT * " +
+            "FROM user_skill_mapping " +
+            "JOIN skill ON user_skill_mapping.skill_id = skill.id " +
+            "JOIN user ON user_skill_mapping.user_id = user.id " +
+            "WHERE skill.skill = ?1 " +
+            "  AND user.is_public = TRUE;",nativeQuery = true)
+    List<UserSkillMappingModel> findBySkillName(String skill);
 }
