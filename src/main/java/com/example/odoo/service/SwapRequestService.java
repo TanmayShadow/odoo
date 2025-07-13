@@ -1,5 +1,6 @@
 package com.example.odoo.service;
 
+import com.example.odoo.dto.SwapRequestDTO;
 import com.example.odoo.model.SwapRequestsModel;
 import com.example.odoo.repository.SwapRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,10 @@ public class SwapRequestService {
         status = status.trim().toUpperCase();
         return swapRequestRepository.findByRequesterIdAndStatus(userId,status);
     }
+//    public List<SwapRequestDTO> getSendSwapRequests(Long userId, String status) {
+//        status = status.trim().toUpperCase();
+//        return swapRequestRepository.getDetailedSendRequests(userId, status);
+//    }
 
     public String updateSwapRequestStatus(Long userId, Long swapRequestId, String status) {
         status = status.trim().toUpperCase();

@@ -65,4 +65,9 @@ public class SkillsController {
         List<UserSkillMappingModel> skills = userSkillMappingService.getAllUsersBySkill(skill);
         return new ResponseEntity<>(skills,HttpStatus.OK);
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllPublicSkills(){
+        return new ResponseEntity<>(userSkillMappingService.getPublicUserSkills(),HttpStatus.OK);
+    }
 }

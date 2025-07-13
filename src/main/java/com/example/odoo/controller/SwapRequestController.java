@@ -1,5 +1,6 @@
 package com.example.odoo.controller;
 
+import com.example.odoo.dto.SwapRequestDTO;
 import com.example.odoo.model.SwapRequestsModel;
 import com.example.odoo.service.SwapRequestService;
 import io.github.tanmayshadow.util.JwtUtil;
@@ -42,6 +43,8 @@ public class SwapRequestController {
 
     @GetMapping("/sendRequest")
     public ResponseEntity<?> getMySendSwapRequest(@RequestParam("status") String status,HttpServletRequest httpServletRequest){
+        System.out.println("Token: "+httpServletRequest.getHeader("X-Authorization"));
+        System.out.println("User Id : "+jwtUtil.getClaim(httpServletRequest,"user"));
         Long userId = Long.parseLong(jwtUtil.getClaim(httpServletRequest,"user")+"");
         List<SwapRequestsModel> swapRequestsModelList = swapRequestService.getSendSwapRequests(userId,status);
         return new ResponseEntity<>(swapRequestsModelList,HttpStatus.OK);
