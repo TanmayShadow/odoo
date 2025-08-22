@@ -118,6 +118,12 @@ Contributions, issues, and feature requests are welcome!
 
 ---
 
+## 💻 Frontend
+
+**https://github.com/MrudulAhirrao/skill-swap.git**
+
+---
+
 ## 👤 Author
 
 **Tanmay Shindkar** — [@TanmayShadow](https://github.com/TanmayShadow)
